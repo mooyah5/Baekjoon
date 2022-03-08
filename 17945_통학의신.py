@@ -1,3 +1,30 @@
+# 이수은
+
+# x**2 + 2AB + B = 0
+(x-1)(x+2) = 0
+# 근 공백 분리 오름차순 출력, 중근이면 하나만 출력
+import math
+A, B = map(int, input().split())
+
+# ax**2 + bx + c =0
+# x**2 + 2Ax + B = 0
+# sqrt 제곱근
+# pow 제곱수
+
+res2 = int((-2*A + (math.sqrt(math.pow(2*A, 2) -4 *B)))/2)
+res1 = int((-2*A - (math.sqrt(math.pow(2*A, 2) -4 *B)))/2)
+
+if res1 ==res2: #중근이면
+    print(res1)
+else:
+    print(res1, res2)
+
+################
+# 최강, 김영진 => 야옹보기
+
+################
+# 백한나 모르겠다
+
 a, b = map(int, input().split())
 
 if b == 0:              # b가 0이면
