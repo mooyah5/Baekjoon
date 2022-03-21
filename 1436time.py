@@ -40,4 +40,4 @@ while True :
         print(int6)
         break
     int6 += 1
-# print(int6)
+print(int6)
