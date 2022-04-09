@@ -38,18 +38,45 @@ deque.rotate(num): 데크를 num만큼 회전한다(양수면 오른쪽, 음수�
 
 
 ### 야옹
+#
+# from collections import deque
+# import sys
+# input = sys.stdin.readline
+#
+# a, b = map(int, input().split())
+# visited = [0] * 100001
+#
+# def bfs(s):
+#     # global visited
+#     q = deque()
+#     q.append(s)
+#
+#     while q:
+#         c = q.popleft()
+#         if c == b:
+#             return visited[c]
+#             break
+#         for nxt in (c+1, c-1, c*2):
+#             if visited[nxt] or nxt < 0 or nxt > 100000:
+#                 continue
+#             visited[nxt] = visited[c] + 1
+#             q.append(nxt)
+#
+# print(bfs(a))
 
+
+
+
+###
 from collections import deque
-import sys
-input = sys.stdin.readline
-
 a, b = map(int, input().split())
-visited = [0] * 100001
-
+visited = [0 for i in range(100001)]
+# print(visited)
 def bfs(s):
-    # global visited
     q = deque()
     q.append(s)
+    global visited
+    visited[s] = 1
 
     while q:
         c = q.popleft()
@@ -57,9 +84,10 @@ def bfs(s):
             return visited[c]
             break
         for nxt in (c+1, c-1, c*2):
-            if visited[nxt] or nxt < 0 or nxt > 100000:
+            if not(0<=nxt<=100000) or visited[nxt] :
                 continue
             visited[nxt] = visited[c] + 1
             q.append(nxt)
 
-print(bfs(a))
+
+print(bfs(a)-1)

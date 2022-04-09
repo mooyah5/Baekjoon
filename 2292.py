@@ -11,6 +11,6 @@ n = int(input())
 s = 1
 i = 1
 while s < n:
-    s = 1 + i**2*6
+    s += i*6
     i += 1
 print(i)
