@@ -5,19 +5,45 @@
 
 ## 병합정렬 재귀
 def merge_sort(array):
-    mid = len(list_str)//2 # 리스트 길이 절반
+    if len(array) <= 1:
+        return array
+
+    mid = len(array) // 2
     left = merge_sort(array[:mid])
     right = merge_sort(array[mid:])
-
     i, j, k = 0, 0, 0
 
-    while i<len(left) and j < len(right):
+    while i < len(left) and j < len(right):
         if left[i] < right[j]:
+            array[k] = left[i]
+            i += 1
+        else:
+            array[k] = right[j]
+            j += 1
+        k += 1
+
+    if i == len(left):
+        while j < len(right):
+            array[k] = right[j]
+            k += 1
+            j += 1
+    elif j == len(right):
+        while i < len(left):
+            array[k] = left[i]
+            k += 1
+            i += 1
+
+    return array
             
+n = int(input())
+arr = [int(input()) for _ in range(n)]
+res = merge_sort(arr)
+print('\n'.join(str(n) for n in res))
 
-t = int(input())
-list_str = []
-for _ in range(t):
-    list_str.append(int(input()))
-
-print(merge_sort(list_str))
+### 파이썬 내장함수
+# n = int(input())
+# nums = list(int(input()) for _ in range(n))
+# nums.sort()
+# for n in nums:
+#     print(n)
+# # print('\n'.join(str(i) for i in nums))
