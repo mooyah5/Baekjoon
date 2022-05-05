@@ -8,4 +8,4 @@ for i in range(5):
 for j in range(15):
     for i in range(15):
         if res[i][j] != -1:
-            print(res[i][j], end='')
+            print(res[i][j], end='') 
