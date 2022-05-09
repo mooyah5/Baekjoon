@@ -8,3 +8,4 @@ for i in range(n):
         else:
             print(s, end=' ')
     print()
+    print()
