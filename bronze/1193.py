@@ -24,3 +24,22 @@
 13 = 3/3
 14 = 2/4
 '''
+
+
+N = int(input())
+cnt = 1
+chk = 0
+while cnt < N:
+    N -= cnt
+    cnt += 1
+    chk += 1
+    
+if chk % 2 != 0: # 짝수, 오름차
+    # print(N,'/',chk+2-N)
+    print(N, end='')
+    print('/', end='')
+    print(chk+2-N)
+else:
+    print(chk+2-N, end='')
+    print('/', end='')
+    print(N)
