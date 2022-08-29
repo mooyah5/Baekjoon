@@ -3,9 +3,10 @@ while True:
     if S == '.' and len(S) == 1:
         break
     else:
+        newS = list(S.replace(' ', ''))
         q = []
-        for s in S:
-            if s == '(':
+        for s in newS:
+            if s == '(' or s == '[':
                 q.append(s)
             elif s == ')':
                 if q and '(' == q[-1]:
@@ -13,8 +14,6 @@ while True:
                 else:
                     print('no')
                     break
-            elif s == '[':
-                q.append(s)
             elif s == ']':
                 if q and '[' in q:
                     q.pop(-1)
@@ -27,5 +26,3 @@ while True:
                 break
             else:
                 print('yes')
-            
-    
