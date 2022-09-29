@@ -103,44 +103,95 @@ def dfs(v):
 #     a, b = map(int, input().split())
 #     G[a].append(b)
 #     G[b].append(a)
-#
+
 # def dfs(v):
 #     global cnt
-#
+
 #     visited[v] = True       # 방문처리 해주고
 #     cnt += 1
-#
+
 #     for nxt in G[v]:
 #         if visited[nxt]:
 #             continue
 #         dfs(nxt)
-#
+
 # cnt = 0
 # dfs(1)
-#
+
 # print(cnt-1)
 
 ## 응용 2
 #
 
 
-V = int(input())    # 정점의 개수
-E = int(input())    # 간선의 개수
-G = [[] for _ in range(V+1)]
-visited = [False for i in range(V+1)]
-for i in range(E):
+
+# 기존 답
+
+# V = int(input())    # 정점의 개수
+# E = int(input())    # 간선의 개수
+# G = [[] for _ in range(V+1)]
+# visited = [False for i in range(V+1)]
+# for i in range(E):
+#     a, b = map(int, input().split())
+#     G[a].append(b)
+#     G[b].append(a)
+
+# def dfs(v):
+#     cnt = 1
+#     visited[v] = True       # 방문처리 해주고
+
+#     for nxt in G[v]:
+#         if visited[nxt]:
+#             continue
+#         cnt += dfs(nxt)
+#     return cnt
+
+# print(dfs(1)-1)
+
+
+# 20220929 (폭망)
+
+# n = int(input())
+# u = int(input())
+# lst = [i for i in range(1, n+1)]
+# visit = [[] for i in range(n)]
+# cnt = 0
+# for i in range(u):
+#     a, b = map(int, input().split())
+#     c = lst.index(a)
+#     if visit[c] == 0:
+#         visit[c] += 1
+        
+# for l in visit:
+#     if l != 0:
+#         cnt += 1
+# print(cnt)
+
+
+# 20220929 재도전 (dfs로)
+
+n = int(input())
+u = int(input())
+lst = [i for i in range(1, n+1)]
+G = [[] for i in range(n+1)]
+visit = [0 for i in range(n+1)]
+cnt = 0
+for i in range(u):
     a, b = map(int, input().split())
     G[a].append(b)
     G[b].append(a)
-
-def dfs(v):
-    cnt = 1
-    visited[v] = True       # 방문처리 해주고
-
-    for nxt in G[v]:
-        if visited[nxt]:
+    
+def dfs(s):
+    global cnt
+    cnt += 1
+    visit[s] += 1
+    
+    for g in G[s]:
+        if visit[g] != 0:
             continue
-        cnt += dfs(nxt)
-    return cnt
-
-print(dfs(1)-1)
+        # cnt = dfs(g)
+        dfs(g)
+    
+    # return cnt
+dfs(1)
+print(cnt)
