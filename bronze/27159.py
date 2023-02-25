@@ -7,15 +7,12 @@
 
 N = int(input())    # 카드의 개수
 arr = list(map(int, input().split(' ')))
-arr2 = []
-pre = [arr[0]]
-ans = arr[0]
+pre = [arr[0]]                  # 이전 카드 확인용 리스트
+ans = arr[0]                    # 그룹별 작은 수 더하기
 for i in range(1, N):
-    if pre[-1] + 1 == arr[i]:
-        pre.append(arr[i])
-        # print('이어짐', arr[i], pre)
-    else:
-        pre.append(arr[i])
-        ans += arr[i]
-# print(pre)
-print('ans', ans)
+    if pre[-1] + 1 == arr[i]:   # 이전 카드보다 1 크면 패스
+        pass
+    else:                       # 이전 카드와 1차이 나지 않으면
+        ans += arr[i]           # 다른 그룹 시작이므로 ans에 더함
+
+print(ans)
