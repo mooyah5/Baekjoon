@@ -7,18 +7,21 @@
 # 그렇지 않으면 n is NOT perfect. 를 출력한다.
 # 한줄에 하나씩 n이 입력되며, 테케가 없으면 막줄에 -1가 입력됨
 
+# -1이 입력될 때까지 입력을 받는다.
 state = True
 while (state):
     n = int(input())
-    measure = []
     if n == -1:
         state = False
         continue
 
+    # 자신을 제외한 약수 모으기
+    measure = []
     for i in range(1, n):
         if n % i == 0:
             measure.append(i)
 
+    # 약수 모음의 합과 n이 같은지 다른지 판별하여 형식에 맞게 출력
     if sum(measure) == n:
         print(n, '= ', end='')
         print(*measure, sep=' + ')
