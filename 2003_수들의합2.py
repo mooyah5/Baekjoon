@@ -22,8 +22,7 @@
 # print(sol)
 
 
-
-# 야옹스쿨 투포인터 개념(연속부분수열)
+# 야옹 투포인터 개념(연속부분수열)
 n, m = map(int, input().split())
 arr = list(map(int, input().split())) + [0]
 s, e = 0, 0
@@ -41,3 +40,26 @@ while e < n:
         e += 1
         total += arr[e]
 print(cnt)
+
+
+# 20230308 혼자 재도전
+N, M = map(int, input().split())
+arr = list(map(int, input().split()))
+s, e = 0, 0
+ans = 0
+while e < N:
+    # print(s, e)
+    leng = sum(arr[s:e+1])
+    # print(s, e, leng)
+    if leng == M:
+        ans += 1
+        e += 1
+        # print(leng, leng == M)
+    if s == N-2:
+        break
+    else:
+        if leng < M or s == e:
+            e += 1
+        elif leng > M:
+            s += 1
+print(ans)
