@@ -1,3 +1,7 @@
+# 수들의 합 2
+# S4
+
+
 # # 혼자 풀어본 것 - 시간초과
 
 # N, M = map(int, input().split())
@@ -49,13 +53,13 @@ s, e = 0, 0
 ans = 0
 while e < N:
     # print(s, e)
-    leng = sum(arr[s:e+1])
+    leng = sum(arr[s : e + 1])
     # print(s, e, leng)
     if leng == M:
         ans += 1
         e += 1
         # print(leng, leng == M)
-    if s == N-2:
+    if s == N - 2:
         break
     else:
         if leng < M or s == e:
