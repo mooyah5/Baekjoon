@@ -1,3 +1,16 @@
+# 용액
+# G5
+# 이분탐색, 투포인터
+
+# 문제
+# 용액 개수 N이 첫줄에 들어오고
+# 두번째 줄에 용액들의 특성값이 공백으로 구분, 정렬되어 들어온다.
+# 혼합하여 0에 가장 가까운 용액을 만드는 두 용액을 찾아라
+
+# 출력
+# 오름차순으로 출력하며, 두 경우 이상이면 아무거나 하나 출력한다.
+
+
 # 1. 시간초과
 # n = int(input())
 # arr = list(map(int, input().split()))
@@ -25,22 +38,40 @@
 # print(arr[min_i[0]], arr[min_i[1]])
 
 
-
 ###
-# 2. 야옹
-n = int(input())
-arr = list(map(int, input().split()))
-s, e = 0, n-1
-x = arr[s]
-y = arr[e]
-while s < e:
-    if abs(x+y) > abs(arr[s]+arr[e]):
-        x = arr[s]
-        y = arr[e]
-    
-    if arr[s] + arr[e] < 0:
-        s += 1
-    else:
-        e -= 1
+# 2.
+# n = int(input())
+# arr = list(map(int, input().split()))
+# s, e = 0, n - 1
+# x = arr[s]
+# y = arr[e]
+# while s < e:
+#     if abs(x + y) > abs(arr[s] + arr[e]):
+#         x = arr[s]
+#         y = arr[e]
 
-print(x, y)
+#     if arr[s] + arr[e] < 0:
+#         s += 1
+#     else:
+#         e -= 1
+
+# print(x, y)
+
+
+# 3. 20230514
+N = int(input())
+arr = list(map(int, input().split()))
+s, e = 0, N - 1
+sum_ = [2174000000, -1, 1]  # [최소차이, s, e]
+while s < e and e < N:
+    mixed = arr[s] + arr[e]
+    if abs(mixed) < abs(sum_[0]):
+        sum_ = [mixed, s, e]
+    if mixed > 0:
+        e -= 1
+    elif mixed < 0:
+        s += 1
+    else:  # 0과 일치하면
+        break
+
+print(arr[sum_[1]], arr[sum_[2]])
