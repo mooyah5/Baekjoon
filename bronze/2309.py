@@ -1,6 +1,10 @@
 # 일곱난쟁이
 # B1
-# 브루트포스, 정렬
+# 브루트포스, 정렬, 투포인터
+
+# 문제
+# 9난쟁이 중 진또배기 7난쟁이만 찾아내기 (오름차순 출력)
+# 일곱난쟁이 키의 합은 100이다. (9난쟁이 키는 모두 다름)
 
 ## 1)
 
@@ -69,3 +73,21 @@
 
 # for i in arr:
 #     print(i)
+
+
+## 4) 20230514
+arr = [int(input()) for _ in range(9)]
+arr.sort()
+s, e = 0, 8
+trash = sum(arr) - 100
+while s < e and e < 9:
+    if arr[s] + arr[e] < trash:
+        s += 1
+    elif arr[s] + arr[e] > trash:
+        e -= 1
+    else:
+        break
+for j in range(9):
+    if s == j or e == j:
+        continue
+    print(arr[j])
