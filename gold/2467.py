@@ -59,19 +59,25 @@
 
 
 # 3. 20230514
+def Two_Pointer(s, e):
+    global ans
+    while s < e and e < N:
+        mixed = arr[s] + arr[e]
+        if abs(mixed) < abs(ans[0]):
+            ans = [mixed, s, e]
+        if mixed > 0:
+            e -= 1
+        elif mixed < 0:
+            s += 1
+        else:  # 0과 일치하면
+            print(arr[ans[1]], arr[ans[2]])
+            return
+    print(arr[ans[1]], arr[ans[2]])
+    return
+
+
 N = int(input())
 arr = list(map(int, input().split()))
 s, e = 0, N - 1
-sum_ = [2174000000, -1, 1]  # [최소차이, s, e]
-while s < e and e < N:
-    mixed = arr[s] + arr[e]
-    if abs(mixed) < abs(sum_[0]):
-        sum_ = [mixed, s, e]
-    if mixed > 0:
-        e -= 1
-    elif mixed < 0:
-        s += 1
-    else:  # 0과 일치하면
-        break
-
-print(arr[sum_[1]], arr[sum_[2]])
+ans = [2174000000, -1, 1]  # [최소차이, s, e]
+Two_Pointer(s, e)
