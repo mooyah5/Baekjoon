@@ -1,24 +1,26 @@
-ans = []
+# ans = []
 
 def solution(nums):
     
-    # Make : 길이가 3인 부분수열을 구하는 함수
-    def Make(i, arr):
-        global ans
+#     # Make : 길이가 3인 부분수열을 구하는 함수
+#     def Make(i, arr):
+#         global ans
 
-        if len(arr) >= 3:
-            ans.append(arr[:])
-            return
+#         if len(arr) >= 3:
+#             ans.append(arr[:])
+#             return
 
-        if i >= len(nums):
-            return
+#         if i >= len(nums):
+#             return
 
-        arr.append(nums[i])
-        Make(i + 1, arr[:])
-        arr.pop()
-        Make(i + 1, arr[:])
-        return ans
-    ans = Make(0, [])
+#         arr.append(nums[i])
+#         Make(i + 1, arr[:])
+#         arr.pop()
+#         Make(i + 1, arr[:])
+#         return ans
+#     ans = Make(0, [])
+    from itertools import combinations as cb
+    ans = cb(nums, 3)
     
     # 소수가 몇 개인지 구하기
     cnt = 0
